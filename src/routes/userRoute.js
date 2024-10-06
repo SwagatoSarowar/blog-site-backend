@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const upload = require("../utils/multer");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 
@@ -10,6 +11,6 @@ router.get("/", userController.getUsers);
 router
   .route("/:id")
   .get(userController.getUser)
-  .patch(/* userController.uploadProfileImage, */ userController.updateUser);
+  .patch(upload.single("profileImage"), userController.updateUser);
 
 module.exports = router;

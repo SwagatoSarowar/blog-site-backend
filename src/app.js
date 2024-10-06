@@ -1,5 +1,6 @@
+require("dotenv").config();
+
 const express = require("express");
-const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieparser = require("cookie-parser");
 const app = express();
@@ -30,5 +31,4 @@ app.use("*", (req, res, next) => {
 // Global error controller
 app.use(errorController);
 
-dotenv.config();
 module.exports = app;

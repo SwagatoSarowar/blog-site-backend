@@ -6,6 +6,11 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: [true, "A title for the blog is required."],
     },
+    category: {
+      type: mongoose.Types.ObjectId,
+      ref: "Category",
+      required: [true, "Category is required."],
+    },
     blogImage: {
       type: String,
     },
@@ -16,6 +21,7 @@ const blogSchema = new mongoose.Schema(
     author: {
       type: mongoose.Types.ObjectId,
       ref: "User",
+      required: [true, "Author is required."],
     },
   },
   {

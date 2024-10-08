@@ -4,14 +4,18 @@ const uploadImage = require("../utils/uploadImage");
 
 /* ======================= GET ALL BLOGS ===================== */
 exports.getBlogs = catchAsync(async function (req, res, next) {
-  const blogs = await Blog.find();
+  const query = req.query;
+
+  const blogs = await Blog.find(query).populate("category").populate("author");
 
   res.status(200).json({ status: "success", data: { blogs } });
 });
 
 /* ======================= GET BLOG BY ID ===================== */
 exports.getBlog = catchAsync(async function (req, res, next) {
-  const blog = await Blog.findById(req.params.id);
+  const blog = await Blog.findById(req.params.id)
+    .populate("category")
+    .populate("author");
 
   res.status(200).json({ status: "success", data: { blog } });
 });

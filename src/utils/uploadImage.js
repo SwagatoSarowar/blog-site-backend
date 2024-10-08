@@ -18,7 +18,7 @@ const uploadImage = (buffer) => {
         if (result) {
           resolve(result);
         } else {
-          reject(new AppError("Image upload failed.", 500));
+          reject(error);
         }
       }
     );
